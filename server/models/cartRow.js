@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
-    'cart_row',
+    'cartRow',
     {
       amount: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
     },
