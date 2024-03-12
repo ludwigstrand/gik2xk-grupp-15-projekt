@@ -29,6 +29,21 @@ async function getAllProducts() {
   }
 }
 
+async function getProduct(id) {
+  try {
+    const product = await db.product.findOne({
+      where: { id },
+      include: [
+        db.rating,
+      ]
+    });
+    /* Om allt blev bra, returnera post */
+    return createResponseSuccess(product);
+  } catch (error) {
+    return createResponseError(error.status, error.message);
+  }
+}
+
 async function destroy(id) {
   if (!id) {
     return createResponseError(422, "Id är obligatoriskt");
@@ -96,4 +111,4 @@ async function addRating(id, rating) {
   }
 }
 
-module.exports = { getAllProducts, destroy, create, update, addRating };
+module.exports = { getAllProducts, destroy, create, update, addRating, getProduct };

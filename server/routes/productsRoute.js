@@ -8,7 +8,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  res.send("Product route");
+  const id = req.params.id;
+  productService.getProduct(id).then((product) => {
+    res.send(product);
+  });
 });
 
 router.post("/:id/addRating", (req, res) => {
