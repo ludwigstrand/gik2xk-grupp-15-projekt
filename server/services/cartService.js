@@ -86,11 +86,18 @@ async function addProductToCart(amount, productId, userId) {
   }
   try {
     const cartId = await _findOrCreateCart(userId); // Await the promise to get the cart ID
+    const cartRow = await db.cartRow.findOne({
+      where: { productId, cartId },
+    });
+    if (cartRow) {
+      await db.cartRow.upsert({ amount: amount, productId: productId, cartId: cartId }, { where: { productId, cartId } });
+    }
+    else {
     await db.cartRow.create({
       amount: amount,
       productId: productId,
       cartId: cartId, // Use the awaited value
-    });
+    });}
     return createResponseMessage(200, "The product was added to the cart.");
   } catch (error) {
     return createResponseError(error.status, error.message);
@@ -116,6 +123,7 @@ function _formatCart(cart) {
     cart.products.map((product) => {
       return (cleanCart.products = [
         {
+          productId: product.id,
           title: product.title,
           amount: product.cartRow.amount,
           price: product.price,

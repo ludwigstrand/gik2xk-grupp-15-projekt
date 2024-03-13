@@ -31,10 +31,13 @@ const constraints = {
 
 router.get("/:id/getCart", (req, res) => {
   const id = req.params.id;
-
-  userService.getUserCart(id).then((result) => {
-    res.status(result.status).json(result.data);
-  });
+  if (!id) {
+    res.status(400).json("Id saknas.");
+  } else {
+    userService.getUserCart(id).then((result) => {
+      res.status(result.status).json(result.data);
+    });
+  }
 });
 
 router.get("/", (req, res) => {
