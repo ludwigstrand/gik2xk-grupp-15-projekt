@@ -1,0 +1,15 @@
+use webshop; 
+
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Banan', 'Fin banan', '20', '../assets/', '2023-12-13 03:10:17', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Äpple', 'Fint Äpple', '50', '../assets/', '2023-12-23 08:04:52', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Annanas', 'Fin Annanas', '30', '../assets/', '2023-12-01 07:51:52', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Kiwi', 'Fin Kiwi', '50', '../assets/', '2023-12-24 07:37:36', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Melon', 'Fin melon', '60', '../assets/', '2023-12-09 19:05:23', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Lök', 'Fin lök', '10', '../assets/', '2023-12-21 03:26:04', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Hallon', 'Fina Hallon', '140', '../assets/', '2024-01-02 12:38:58', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Blåbär', 'Fina blåbär', '20', '../assets/', '2024-01-05 22:42:34', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Gurka', 'Fin Gurka', '50', '../assets/', '2023-12-08 11:59:16', '2024-01-08 00:00:00');
+insert into products (title, description, price, image_url, created_at, updated_at) values ('Mango', 'Fin Manog', '50', '../assets/', '2023-12-09 09:24:19', '2024-01-08 00:00:00');
+
+
+
