@@ -9,6 +9,7 @@ import banan from "../assets/banan.jpg";
 import blåbär from "../assets/blåbär.jpg";
 import citron from "../assets/citron.jpg";
 import drakfrukt from "../assets/drakfrukt.jpg";
+import { Box } from "@mui/material";
 
 const productDescription = [
   {
@@ -72,7 +73,7 @@ const productDescription = [
 function ProductList() {
   return (
     <>
-      <div>
+      <Box display={"flex"} flexWrap={"wrap"} gap={5}>
         {productDescription.map((icon) => (
           <ProductItemSmall
             key={icon.id}
@@ -82,7 +83,7 @@ function ProductList() {
             imageUrl={icon.imageUrl}
           />
         ))}
-      </div>
+      </Box>
       <div>
         {productDescription.map((icon) => (
           <ProductItemLarge

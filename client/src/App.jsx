@@ -17,8 +17,8 @@ function App() {
           <Typography variant='h1' sx={{ flexGrow: 1}}>
           <Link to="/">Home</Link>
           </Typography>
-          <Button color='inherit'>
-            <Link to="/products/new">Lägg Produkt</Link>
+          <Button variant="contained" color='inherit' >
+            <Link to="/products/new">Lägg till Produkt</Link>
           </Button>
         </Toolbar>
       </AppBar>
