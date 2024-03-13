@@ -1,8 +1,14 @@
 import ProductItemSmall from "./ProductItemSmall";
+import ProductItemLarge from "./ProductItemLarge";
 import { useEffect, useState } from "react";
 import ananas from "../assets/ananas.jpg";
 import apelsin from "../assets/apelsin.jpg";
 import äpple from "../assets/äpple.jpg";
+import avocado from "../assets/avocado.jpg";
+import banan from "../assets/banan.jpg";
+import blåbär from "../assets/blåbär.jpg";
+import citron from "../assets/citron.jpg";
+import drakfrukt from "../assets/drakfrukt.jpg";
 
 const productDescription = [
   {
@@ -26,21 +32,69 @@ const productDescription = [
     price: 300,
     imageUrl: äpple,
   },
+  {
+    id: 4,
+    name: "Avocado",
+    description: "This is product 4",
+    price: 400,
+    imageUrl: avocado,
+  },
+  {
+    id: 5,
+    name: "Banan",
+    description: "This is product 5",
+    price: 500,
+    imageUrl: banan,
+  },
+  {
+    id: 6,
+    name: "Blåbär",
+    description: "This is product 6",
+    price: 600,
+    imageUrl: blåbär,
+  },
+  {
+    id: 7,
+    name: "Citron",
+    description: "This is product 7",
+    price: 700,
+    imageUrl: citron,
+  },
+  {
+    id: 8,
+    name: "Drakfrukt",
+    description: "This is product 8",
+    price: 800,
+    imageUrl: drakfrukt,
+  },
 ];
 
 function ProductList() {
   return (
-    <div>
-      {productDescription.map((icon) => (
-        <ProductItemSmall
-          key={icon.id}
-          name={icon.name}
-          description={icon.description}
-          price={icon.price}
-          imageUrl={icon.imageUrl}
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {productDescription.map((icon) => (
+          <ProductItemSmall
+            key={icon.id}
+            name={icon.name}
+            description={icon.description}
+            price={icon.price}
+            imageUrl={icon.imageUrl}
+          />
+        ))}
+      </div>
+      <div>
+        {productDescription.map((icon) => (
+          <ProductItemLarge
+            key={icon.id}
+            name={icon.name}
+            description={icon.description}
+            price={icon.price}
+            imageUrl={icon.imageUrl}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
