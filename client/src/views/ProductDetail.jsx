@@ -2,7 +2,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ProductItemLarge from "../components/ProductItemLarge";
 import { addRating, getOne } from "../services/ProductService";
 import { useEffect, useState } from "react";
-import { Box, Container, Rating, Typography } from "@mui/material";
+import { Box, Container, Paper, Rating, Typography } from "@mui/material";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -30,6 +30,7 @@ function ProductDetail() {
 
   return product ? (
     <>
+    <Paper elevation={3} sx={{ pb: 10, pt: 10, borderRadius: 2 }}>
       {message && open && (
         <Alert
           onClose={() => {
@@ -42,9 +43,9 @@ function ProductDetail() {
           {message}
         </Alert>
       )}
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{display: "flex", justifyContent:"center"}}>
         <ProductItemLarge product={product} />
-        <Box>
+        {/* <Box>
           <div>
             <Rating
               name="simple-controlled"
@@ -56,8 +57,9 @@ function ProductDetail() {
               precision={1}
             />
           </div>
-        </Box>
+        </Box> */}
       </Container>
+      </Paper>
     </>
   ) : (
     <h3>Kunde inte hämta inlägg</h3>

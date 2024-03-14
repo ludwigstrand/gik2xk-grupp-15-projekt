@@ -104,7 +104,6 @@ function ProductList({pathname}) {
     //     ))}
     //   </Box>
     // </>
-    console.log(products.ratings),
     <>
     <Box display={"flex"} flexWrap={"wrap"} gap={5}>
     {products?.length > 0 ? (
