@@ -104,12 +104,11 @@ function ProductList({pathname}) {
     //     ))}
     //   </Box>
     // </>
-    console.log(products),
+    console.log(products.ratings),
     <>
     <Box display={"flex"} flexWrap={"wrap"} gap={5}>
-    {products.data?.length > 0 ? (
-     // OBS MÖJLIGTVIS VÄLDIGT DÅLIGT, DATA?????
-     products.data
+    {products?.length > 0 ? (
+     products
         .map((products) => (
             <ProductItemSmall product ={products}/>      
         ))

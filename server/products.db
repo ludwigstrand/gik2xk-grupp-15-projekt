@@ -1,5 +1,7 @@
 use webshop; 
 
+insert into rating
+
 insert into products (title, description, price, image_url, created_at, updated_at) values ('Banan', 'Fin banan', '20', 'https://t4.ftcdn.net/jpg/00/64/75/97/240_F_64759733_oLj6dBUvvHeezmTluE7bOW7pW73uWjjA.jpg', '2023-12-13 03:10:17', '2024-01-08 00:00:00');
 insert into products (title, description, price, image_url, created_at, updated_at) values ('Äpple', 'Fint äpple', '50', 'https://t3.ftcdn.net/jpg/02/77/58/42/240_F_277584211_N8or6jJXlxh6bXsnlj5VHIfYzkhBoQ22.jpg', '2023-12-23 08:04:52', '2024-01-08 00:00:00');
 insert into products (title, description, price, image_url, created_at, updated_at) values ('Ananas', 'Fin ananas', '30', 'https://t3.ftcdn.net/jpg/00/52/32/48/240_F_52324876_RysLErqfGu2YexMj87bCn7YrMyWGe37w.jpg', '2023-12-01 07:51:52', '2024-01-08 00:00:00');

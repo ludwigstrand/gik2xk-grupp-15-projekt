@@ -4,43 +4,79 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, Rating, CardActionArea, CardActions } from "@mui/material";
+import {
+  Button,
+  Rating,
+  CardActionArea,
+  CardActions,
+  Box,
+} from "@mui/material";
 
+function avgRating(product) {
+let avgRating = 0;
 
+  product.ratings.length > 0 &&
+    product.ratings.map((index) => (
+    avgRating += index.rating
 
-function ProductItemSmall({product}) {
-  return (
+    ))
+
     
-    <Card sx={{ width: 300, mb: 5}}>
-      <CardActionArea >
-      <Link to={`/products/${product.id}`}>
-        <CardMedia
-          sx={{ height: 200 }}
-          component="img"
-          image={product.imageUrl}
-          alt="fruit"
+    return avgRating/product.ratings.length
+
+}
+
+function ProductItemSmall({ product }) {
+  return (
+    <>
+      <Card sx={{ width: 300, mb: 5 }}>
+        <CardActionArea>
+          <Link to={`/products/${product.id}`}>
+            <CardMedia
+              sx={{ height: 200 }}
+              component="img"
+              image={product.imageUrl}
+              alt="fruit"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {product.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {product.description}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {product.price} kr
+              </Typography>
+              {/* <Box mb={2}>
+                {product.ratings.length > 0 &&
+                  product.ratings.map((index) => (
+                    <p key={index}>{index.rating}</p>
+                  ))}
+              </Box> */}
+            </CardContent>
+          </Link>
+        </CardActionArea>
+        <Typography component="legend" sx={{ ml: 2 }}>
+          Rating:
+        </Typography>
+        <Rating
+          name="read-only"
+          value={
+            avgRating(product)
+          }
+          readOnly
+          sx={{ ml: 2 }}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {product.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {product.description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {product.price} kr
-          </Typography>
-        </CardContent>
-        </Link>
-      </CardActionArea>
-      <Typography component="legend" sx={{ml:2}}>Rating:</Typography>
-      <Rating name="read-only" value={product.rating} readOnly sx={{ml:2}}/>
-      <CardActions>
-        <Button size="small" color="primary">
-          Köp
-        </Button>
-      </CardActions>
-    </Card>
+
+
+        <CardActions>
+          <Button size="small" color="primary">
+            Köp
+          </Button>
+        </CardActions>
+      </Card>
+    </>
   );
 }
 

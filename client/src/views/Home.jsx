@@ -25,6 +25,7 @@ function Home() {
           <Typography variant="h2" sx={{}}>
             Frukt och grönt
           </Typography>
+          
         </Box>
         <ProductList />
       </Paper>

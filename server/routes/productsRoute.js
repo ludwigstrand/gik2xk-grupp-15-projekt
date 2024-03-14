@@ -2,15 +2,15 @@ const router = require("express").Router();
 const productService = require("../services/productService");
 
 router.get("/", (req, res) => {
-  productService.getAllProducts().then((products) => {
-    res.send(products);
+  productService.getAllProducts().then((result) => {
+    res.status(result.status).json(result.data);
   });
 });
 
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  productService.getProduct(id).then((product) => {
-    res.send(product);
+  productService.getProduct(id).then((result) => {
+    res.status(result.status).json(result.data);
   });
 });
 
