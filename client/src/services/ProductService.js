@@ -69,7 +69,7 @@ export async function remove(id) {
 
 export async function addRating(productId, rating) {
   try {
-    const response = await axios.post(`/products/${productId}/addRating`, rating);
+    const response = await axios.post(`/products/${productId}/addRating`, { rating: rating });
     if (response.status === 200) return response.data;
     else {
       console.log(data);

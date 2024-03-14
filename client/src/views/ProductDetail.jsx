@@ -14,12 +14,14 @@ function ProductDetail() {
   }, [id]);
 
   const navigate = useNavigate();
-
-  function onRatingAdd(rating) {
-    addRating({product}, rating)
-      .then((rating) => getOne(id))
-      .then((product) => setProduct(product));
+  
+  function onRatingAdd(ratingValue) {
+    addRating(id, ratingValue) // Fix this line to use id directly
+      .then(() => getOne(id))
+      .then((product) => setProduct(product))
+      .catch((error) => console.error("Error updating the rating:", error));
   }
+
   const location = useLocation();
   const message = location.state?.message;
   const [value, setValue] = useState(2);
