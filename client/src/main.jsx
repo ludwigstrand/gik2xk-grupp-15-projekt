@@ -18,6 +18,7 @@ import {
   red,
   teal
 } from '@mui/material/colors';
+import ProductDetail from './views/ProductDetail.jsx';
 
 const theme = createTheme({
   palette: {
@@ -118,10 +119,10 @@ const router = createBrowserRouter([
       //   path: '/posts/:id/edit',
       //   element: <PostEdit />
       // },
-      // {
-      //   path: '/posts/:id',
-      //   element: <PostDetail />
-      // },
+      {
+        path: '/products/:id',
+        element: <ProductDetail />
+      },
       // {
       //   path: '/posts/new',
       //   element: <PostEdit />
