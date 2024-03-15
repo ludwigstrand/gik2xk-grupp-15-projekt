@@ -42,7 +42,7 @@ router.put("/", (req, res) => {
 router.delete("/", (req, res) => {
   const id = req.body.id;
   productService.destroy(id).then((result) => {
-    res.status(result.status).json(result.message);
+    res.status(result.status).json(result.data);
   });
 });
 

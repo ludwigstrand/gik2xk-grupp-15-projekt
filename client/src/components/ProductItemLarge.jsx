@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import { addRating } from "../services/ProductService";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ProductItemLarge({ product }) {
   const [value, setValue] = useState(0);
-
 
   return (
     <>
@@ -29,12 +29,6 @@ function ProductItemLarge({ product }) {
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {product.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {product.description}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {product.price} kr
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -51,14 +45,34 @@ function ProductItemLarge({ product }) {
             }}
             precision={1}
           />
-          <Button onClick={() => addRating(product.id, value)} variant="contained" sx={{ ml: 2 }}>
+          <Button
+            onClick={() => addRating(product.id, value)}
+            variant="contained"
+            sx={{ ml: 2 }}
+          >
             Skicka rating
           </Button>
         </Box>
 
+        
+          <CardActions sx={{ml:1}}>
+            <Typography variant="body2" color="text.secondary">
+              {product.price} kr
+            </Typography>
+            <Button size="small" color="primary" variant="contained">
+              Köp
+            </Button>
+          </CardActions>
+          <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {product.description}
+          </Typography>
+        </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            Köp
+          <Button size="small" color="info" variant="contained">
+            <Link to={`/products/${product.id}/edit`}>
+            Ändra
+            </Link>
           </Button>
         </CardActions>
       </Card>

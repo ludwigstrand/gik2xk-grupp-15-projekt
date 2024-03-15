@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { truncate } from '../common/formatHelpers';
 import {
   Button,
   Rating,
@@ -43,7 +44,7 @@ function ProductItemSmall({ product }) {
                 {product.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {product.description}
+                {truncate(product.description, 75) }
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {product.price} kr
@@ -61,10 +62,11 @@ function ProductItemSmall({ product }) {
           Rating:
         </Typography>
         <Rating
-          name="read-only"
+          name="half-rating"
           value={
             avgRating(product)
           }
+          precision={0.5}
           readOnly
           sx={{ ml: 2 }}
         />

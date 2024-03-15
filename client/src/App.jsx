@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
   Box,
   AppBar,
@@ -20,6 +21,10 @@ function App() {
           <Button variant="contained" color='inherit' >
             <Link to="/products/new">Lägg till Produkt</Link>
           </Button>
+          <Link to="/products/add">
+            <ShoppingCartIcon fontSize='large' sx={{ ml: 5, mr: 3 }}/>
+          </Link>
+          
         </Toolbar>
       </AppBar>
       <Container sx={{ mt: 4 }} maxWidth="xl" component="main">

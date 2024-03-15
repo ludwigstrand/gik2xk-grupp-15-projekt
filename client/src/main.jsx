@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-// import PostEdit from './views/PostEdit.jsx';
+import ProductEdit from './views/ProductEdit.jsx';
 // import Posts from './views/Posts.jsx';
 // import PostDetail from './views/PostDetail.jsx';
 import Home from './views/Home.jsx';
@@ -115,18 +115,18 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />
       },
-      // {
-      //   path: '/posts/:id/edit',
-      //   element: <PostEdit />
-      // },
+      {
+         path: '/products/:id/edit',
+         element: <ProductEdit />
+       },
       {
         path: '/products/:id',
         element: <ProductDetail />
       },
-      // {
-      //   path: '/posts/new',
-      //   element: <PostEdit />
-      // },
+      {
+         path: '/products/new',
+         element: <ProductEdit />
+       },
       // {
       //   path: '/users/:id/posts',
       //   element: <Posts />

@@ -2,7 +2,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ProductItemLarge from "../components/ProductItemLarge";
 import { addRating, getOne } from "../services/ProductService";
 import { useEffect, useState } from "react";
-import { Box, Container, Paper, Rating, Typography } from "@mui/material";
+import { Alert, Box, Container, Paper, Rating, Typography } from "@mui/material";
 
 function ProductDetail() {
   const { id } = useParams();
