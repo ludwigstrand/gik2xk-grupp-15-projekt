@@ -109,7 +109,7 @@ function ProductList({pathname}) {
     {products?.length > 0 ? (
      products
         .map((products) => (
-            <ProductItemSmall product ={products}/>      
+            <ProductItemSmall key={products.id} product={products}/>      
         ))
         
     ) : (
