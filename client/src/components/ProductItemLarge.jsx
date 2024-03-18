@@ -9,12 +9,15 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import { addRating } from "../services/ProductService";
+//Tagit bort rad 13:
+// import { addRating } from "../services/ProductService";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function ProductItemLarge({ product }) {
+//Lagt till onRatingAdd som in, rad 18
+function ProductItemLarge({ product, onRatingAdd }) {
   const [value, setValue] = useState(0);
+
 
   return (
     <>
@@ -43,10 +46,14 @@ function ProductItemLarge({ product }) {
             onChange={(event, rating) => {
               setValue(rating);
             }}
+            // Lagt till rad 50
+            onSave={onRatingAdd}
             precision={1}
           />
           <Button
-            onClick={() => addRating(product.id, value)}
+          //Ändrat rad 55
+            onClick={() => onRatingAdd(value)}
+          //  onClick={() => addRating(product.id, value)}
             variant="contained"
             sx={{ ml: 2 }}
           >
