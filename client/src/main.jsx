@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import ProductEdit from './views/ProductEdit.jsx';
+import Cart from './views/Cart.jsx';
 // import Posts from './views/Posts.jsx';
 // import PostDetail from './views/PostDetail.jsx';
 import Home from './views/Home.jsx';
@@ -127,10 +128,10 @@ const router = createBrowserRouter([
          path: '/products/new',
          element: <ProductEdit />
        },
-      // {
-      //   path: '/users/:id/posts',
-      //   element: <Posts />
-      // },
+      {
+        path: '/carts/:id',
+        element: <Cart />
+      },
       // {
       //   path: '/tags/:tag/posts',
       //   element: <Posts />

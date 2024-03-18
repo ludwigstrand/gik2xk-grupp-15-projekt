@@ -16,7 +16,7 @@ export function toDateTimeString(dateString) {
     locale: svLocale
   });
   string += ', klockan ';
-  string += format(date, 'hh:mm:ss');
+  string += format(date, 'HH:mm:ss');
   return string;
 }
 

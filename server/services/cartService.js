@@ -90,7 +90,8 @@ async function addProductToCart(amount, productId, userId) {
       where: { productId, cartId },
     });
     if (cartRow) {
-      await db.cartRow.upsert({ amount: amount, productId: productId, cartId: cartId }, { where: { productId, cartId } });
+      const newAmount = cartRow.amount + 1;
+      await db.cartRow.upsert({ amount: newAmount, productId: productId, cartId: cartId }, { where: { productId, cartId } });
     }
     else {
     await db.cartRow.create({
@@ -119,14 +120,14 @@ function _formatCart(cart) {
 
   if (cart.products) {
     cleanCart.products = [];
-
+    
     cart.products.map((product) => {
       return (cleanCart.products = [
         {
           productId: product.id,
           title: product.title,
           amount: product.cartRow.amount,
-          price: product.price,
+          price: product.cartRow.amount * product.price,
         },
         ...cleanCart.products
       ]);

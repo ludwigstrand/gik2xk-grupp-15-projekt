@@ -24,7 +24,7 @@ function ProductItemLarge({ product, onRatingAdd }) {
       <Card sx={{ width: 500, mb: 10 }}>
         <CardActionArea>
           <CardMedia
-            sx={{ height: 300 }}
+            // sx={{ height: 100 }}
             component="img"
             image={product.imageUrl}
             alt="fruit"

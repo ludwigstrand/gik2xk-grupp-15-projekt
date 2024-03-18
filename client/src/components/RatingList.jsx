@@ -5,6 +5,12 @@ import { toDateTimeString } from '../common/formatHelpers';
 
 function RatingList({ rating }) {
 
+  const emptyUser = {
+    id: 2,
+    firstName: 'Ludwig',
+    lastName: 'Strand',
+  };
+
   return (
     <ListItem sx={{ mb: 1, borderBottom: `1px solid ${grey[300]}` }}>
       <ListItemText
@@ -14,7 +20,7 @@ function RatingList({ rating }) {
             component="p"
             fontWeight="bold"
             variant="body1">
-            {rating.user} säger:
+            {emptyUser.firstName} gav:
           </Typography>
         }
         secondary={

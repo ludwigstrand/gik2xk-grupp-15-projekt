@@ -12,6 +12,7 @@ import {
   CardActions,
   Box,
 } from "@mui/material";
+import { addToCart } from "../services/CartService";
 
 function avgRating(product) {
 let avgRating = 0;
@@ -27,9 +28,17 @@ let avgRating = 0;
 
 }
 
+function onPurchase(e, productId) {
+
+  addToCart(productId)
+  console.log(productId)
+  console.log('added to cart')
+  return null
+}
+
 function ProductItemSmall({ product }) {
   return (
-    <>
+
       <Card sx={{ width: 300, mb: 5 }}>
         <CardActionArea>
           <Link to={`/products/${product.id}`}>
@@ -71,14 +80,13 @@ function ProductItemSmall({ product }) {
           sx={{ ml: 2 }}
         />
 
-
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={()=> addToCart(1, product.id, 2)}>
             Köp
           </Button>
         </CardActions>
       </Card>
-    </>
+    
   );
 }
 
