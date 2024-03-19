@@ -13,6 +13,7 @@ import {
 // import { addRating } from "../services/ProductService";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { addToCart } from "../services/CartService";
 
 //Lagt till onRatingAdd som in, rad 18
 function ProductItemLarge({ product, onRatingAdd }) {
@@ -66,7 +67,7 @@ function ProductItemLarge({ product, onRatingAdd }) {
             <Typography variant="body2" color="text.secondary">
               {product.price} kr
             </Typography>
-            <Button size="small" color="primary" variant="contained">
+            <Button variant="contained" size="small" color="primary" onClick={()=> addToCart(1, product.id, 1)}>
               Köp
             </Button>
           </CardActions>
