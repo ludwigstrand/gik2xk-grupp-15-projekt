@@ -70,16 +70,13 @@ async function destroyCart(id) {
 
 async function _findOrCreateCart(userId) {
     try {
-      const cart = await db.cart.findOne({ where: { userId: userId } });
-      if (cart) {
-        return cart.id;
-      } else {
-        const newCart = await db.cart.create({ userId: userId, paid: false });
-        return newCart.id;
-      }
-    }
-    catch (error) {
-        return createResponseError(error.status, error.message);
+      const cart = await db.cart.findOrCreate({
+        where: { userId },
+        defaults: { userId },
+      });
+      return cart[0].id;
+    } catch (error) {
+      return createResponseError(error.status, error.message);
     }
 }
 
@@ -103,25 +100,6 @@ async function addProductToCart(amount, productId, userId) {
       cartId: cartId, // Use the awaited value
     });}
     return createResponseMessage(200, "The product was added to the cart.");
-  } catch (error) {
-    return createResponseError(error.status, error.message);
-  }
-}
-
-
-async function removeProductFromCart(productId, cartId) {
-  try {
-    const cartRow = await db.cartRow.findOne({
-      where: { productId, cartId },
-    });
-    if (cartRow) {
-      await db.cartRow.destroy({
-        where: { productId, cartId },
-      });
-      return createResponseMessage(200, "Produkten togs bort från kundvagnen.");
-    } else {
-      return createResponseError(404, "Produkten finns inte i kundvagnen.");
-    }
   } catch (error) {
     return createResponseError(error.status, error.message);
   }
@@ -187,4 +165,4 @@ function _formatCart(cart) {
 // }
 
 
-module.exports = { getAllCarts, getCart, createCart, updateCart, destroyCart, removeProductFromCart, addProductToCart };
+module.exports = { getAllCarts, getCart, createCart, updateCart, destroyCart, addProductToCart };
