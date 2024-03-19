@@ -7,6 +7,7 @@ import {
   CardContent,
   CardMedia,
   Rating,
+  TextField,
   Typography,
 } from "@mui/material";
 //Tagit bort rad 13:
@@ -14,11 +15,16 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { addToCart } from "../services/CartService";
+import { Unstable_NumberInput as BaseNumberInput } from "@mui/base/Unstable_NumberInput";
+import QuantityInput from "./NumberInput";
+import NumberInput from "./NumberInput";
+import { avgRating } from "./ProductItemSmall";
 
 //Lagt till onRatingAdd som in, rad 18
 function ProductItemLarge({ product, onRatingAdd }) {
   const [value, setValue] = useState(0);
 
+  let amount = 0;
 
   return (
       <Card sx={{ width: 500, mb: 10 }}>
@@ -42,39 +48,60 @@ function ProductItemLarge({ product, onRatingAdd }) {
           <Rating
             sx={{ ml: 2 }}
             name="simple-controlled"
-            value={value}
+            defaultValue={avgRating(product)}
             onChange={(event, rating) => {
               setValue(rating);
             }}
             // Lagt till rad 50
             onSave={onRatingAdd}
-            precision={1}
+            precision={.5}
           />
           <Button
-          //Ändrat rad 55
+            //Ändrat rad 55
             onClick={() => onRatingAdd(value)}
-          //  onClick={() => addRating(product.id, value)}
+            //  onClick={() => addRating(product.id, value)}
             variant="contained"
-            sx={{ ml: 2 }}
+            sx={{ ml: 4 }}
           >
             Skicka rating
           </Button>
         </Box>
-          <CardActions sx={{ml:1}}>
-            <Typography variant="body2" color="text.secondary">
-              {product.price} kr
-            </Typography>
-            <Button variant="contained" size="small" color="primary" onClick={()=> addToCart(1, product.id, 1)}>
-              Köp
-            </Button>
-          </CardActions>
-          <CardContent>
+
+        <CardActions sx={{ ml: 1 }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: 20, mr: 2 }}
+          >
+            {product.price} kr
+          </Typography>
+          <NumberInput
+            sx={{ mr: 10 }}
+            slotProps={{
+              input: {
+                // this exactly the same as onInputChange above
+                onChange: (event) =>
+                  console.log(`the input value is: ${event.target.value}`),
+              },
+            }}
+          />
+          <Button
+            sx={{ mr: 10 }}
+            variant="contained"
+            size="small"
+            color="primary"
+            onClick={() => addToCart(1, product.id, 1)}
+          >
+            Köp
+          </Button>
+        </CardActions>
+        <CardContent>
           <Typography variant="body2" color="text.secondary">
             {product.description}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="admin" variant="contained">
+          <Button size="small" color="info" variant="contained">
             <Link to={`/products/${product.id}/edit`}>
             Ändra
             </Link>

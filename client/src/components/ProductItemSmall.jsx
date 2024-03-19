@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { addToCart } from "../services/CartService";
 
-function avgRating(product) {
+export function avgRating(product) {
 let avgRating = 0;
 
   product.ratings.length > 0 &&
@@ -24,6 +24,7 @@ let avgRating = 0;
 
     
     return avgRating/product.ratings.length
+    
 
 }
 
