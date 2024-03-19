@@ -2,7 +2,6 @@ import { Box, ListItem, ListItemText, Typography, Rating } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { toDateTimeString } from '../common/formatHelpers';
 
-
 function RatingList({ rating }) {
 
   const emptyUser = {
@@ -45,15 +44,4 @@ function RatingList({ rating }) {
     </ListItem>
   );
 }
-
-
-{/* <Rating
-          name="half-rating"
-          value={
-            avgRating(product)
-          }
-          precision={0.5}
-          readOnly
-          sx={{ ml: 2 }}
-        /> */}
 export default RatingList;

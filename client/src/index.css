@@ -12,6 +12,7 @@ root {
 ul,
 ol {
   padding: 0;
+  list-style: none;
 }
 :where(body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote, dl, dd) {
   margin: 0;
@@ -26,13 +27,13 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
 }
-ul,
-ol {
-  list-style: none;
-}
 a:not([class]) {
   text-decoration-skip-ink: auto;
   text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  color: inherit;
 }
 img {
   display: block;

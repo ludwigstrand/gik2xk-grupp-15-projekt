@@ -10,7 +10,6 @@ import {
   Rating,
   CardActionArea,
   CardActions,
-  Box,
 } from "@mui/material";
 import { addToCart } from "../services/CartService";
 
@@ -50,12 +49,6 @@ function ProductItemSmall({ product }) {
               <Typography variant="body2" color="text.secondary">
                 {product.price} kr
               </Typography>
-              {/* <Box mb={2}>
-                {product.ratings.length > 0 &&
-                  product.ratings.map((index) => (
-                    <p key={index}>{index.rating}</p>
-                  ))}
-              </Box> */}
             </CardContent>
           </Link>
         </CardActionArea>

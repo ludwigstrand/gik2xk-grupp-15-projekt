@@ -3,21 +3,20 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import ProductEdit from './views/ProductEdit.jsx';
 import Cart from './views/Cart.jsx';
-// import Posts from './views/Posts.jsx';
-// import PostDetail from './views/PostDetail.jsx';
 import Home from './views/Home.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
-  blueGrey,
+  lime, 
+  teal, 
+  deepOrange,
   green,
   grey,
   orange,
   purple,
   red,
-  teal
 } from '@mui/material/colors';
 import ProductDetail from './views/ProductDetail.jsx';
 
@@ -25,43 +24,58 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     background: {
-      default: '#f3f3f3',
-      paper: grey[50]
+      default: grey[50], 
+      paper: grey[100],
     },
     primary: {
-      main: green[500]
+      main: green[600], 
     },
     secondary: {
-      main: blueGrey[500]
+      main: lime[700], 
     },
     success: {
-      main: teal['700']
+      main: green[500], 
+    },
+    admin: {
+      main: teal[500],
     },
     error: {
-      main: red['700']
+      main: deepOrange[800], 
+    },
+    warning: {
+      main: lime[800], 
+    },
+    info: {
+      main: green[300], 
+    },
+    text: {
+      primary: grey[900], 
+      secondary: green[800], 
     }
   },
   typography: {
     fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontFamily: 'Angkor',
+      fontFamily: 'Angkor', 
       fontSize: '3rem',
       marginBlock: '1.6rem',
+      color: green[900], 
     },
     h2: {
       fontSize: '2.1rem',
       marginBottom: '.7em',
-      color: blueGrey[800]
+      color: lime[900], 
     },
     h3: {
-      fontSize: '1.6rem'
+      fontSize: '1.6rem',
+      color: teal[700], 
     },
     h4: {
       fontSize: '1.3rem',
-      color: 'rgb(106, 77, 123)'
+      color: lime[600], 
     },
-    body1: { color: blueGrey[700] },
-    body2: { color: blueGrey[800] }
+    body1: { color: grey[800] }, 
+    body2: { color: grey[900] }
   }
 });
 //Exempel alternativ mörkt tema. Byt ut till <ThemeProvider theme={darkTheme}> nedan för att testa.

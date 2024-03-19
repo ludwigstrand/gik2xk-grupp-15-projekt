@@ -4,12 +4,10 @@ import { create, getOne, remove, update } from '../services/ProductService';
 import {
   Box,
   Button,
-  Chip,
   Container,
   TextField,
   Typography
 } from '@mui/material';
-/* import TagField from '../components/TagField'; */
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
@@ -63,30 +61,10 @@ function ProductEdit() {
     );
   }
 
-/*   function onTagAdd(tagString) {
-    //splitta arrayen vid kommatecken
-    const tagArray = tagString.split(',');
-    //trimma whitespace runt taggar
-    const uniqueAndTrimmedTags = tagArray
-      .map((tag) => tag.trim())
-      .filter((tag) => !post.tags.includes(tag));
-
-    //slå samman befintlig tag-array med de nya, unika taggarna
-    const mergedArray = [...post.tags, ...uniqueAndTrimmedTags];
-
-    //spara befintligt inlägg med nya tags-arrayen till state.
-    setPost({ ...post, tags: mergedArray });
-  }
- */
-/*   function onTagDelete(tagToDelete) {
-    const newTags = post.tags.filter((tag) => tag !== tagToDelete);
-
-    setPost({ ...post, tags: newTags });
-  } */
   return (
     <Container maxWidth="lg">
-      <Typography variant="h4" component="h2">
-        {product.id ? 'Ändra produkt' : 'Skapa produkt'}
+      <Typography variant="h3" component="h2">
+        {product.id ? 'Ändra produkt' : 'Skapa ny produkt'}
       </Typography>
       <Box mt={4}>
         <form>
@@ -161,7 +139,7 @@ function ProductEdit() {
               startIcon={<SaveIcon />}
               onClick={onSave}
               variant="contained"
-              color="success">
+              color="admin">
               Spara
             </Button>
           </Box>

@@ -1,7 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
-  Box,
   AppBar,
   Toolbar,
   Typography,
@@ -9,25 +8,28 @@ import {
   Container,
   Badge,
 } from "@mui/material";
-import ProductList from "./components/ProductList";
 import { getOne } from "./services/CartService";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [cart, setCarts] = useState({});
+  const [cart, setCart] = useState({});
 
   useEffect(() => {
-    getOne(1).then((fetchedCart) => setCarts(fetchedCart));
+    updateCart();
   }, []);
+
+  function updateCart () {
+    getOne(1).then((fetchedCart) => setCart(fetchedCart));
+  }
 
   return (
     <>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h1" sx={{ flexGrow: 1 }}>
-            <Link to="/">Home</Link>
+            <Link to="/">Hem</Link>
           </Typography>
-          <Button variant="contained" color="inherit">
+          <Button variant="contained" color="admin">
             <Link to="/products/new">Lägg till Produkt</Link>
           </Button>
           <Link to={`/carts/${cart.cartId}`}>

@@ -21,7 +21,6 @@ function ProductItemLarge({ product, onRatingAdd }) {
 
 
   return (
-    <>
       <Card sx={{ width: 500, mb: 10 }}>
         <CardActionArea>
           <CardMedia
@@ -61,8 +60,6 @@ function ProductItemLarge({ product, onRatingAdd }) {
             Skicka rating
           </Button>
         </Box>
-
-        
           <CardActions sx={{ml:1}}>
             <Typography variant="body2" color="text.secondary">
               {product.price} kr
@@ -77,23 +74,13 @@ function ProductItemLarge({ product, onRatingAdd }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="info" variant="contained">
+          <Button size="small" color="admin" variant="contained">
             <Link to={`/products/${product.id}/edit`}>
             Ändra
             </Link>
           </Button>
         </CardActions>
       </Card>
-
-      {/* <Typography component="legend"></Typography>
-<Rating
-  name="simple-controlled"
-  onChange={(event, newValue) => {
-    addRating(product.id, newValue);
-  }}
-/> */}
-      {/* <Button onClick={() => addRating(product.id, newValue)}>Spara Betyg</Button> */}
-    </>
   );
 }
 

@@ -1,25 +1,15 @@
 import {
   Avatar,
   Button,
-  Card,
-  IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  TableBody,
   TableCell,
-  TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { getOne, removeProductFromCart } from "../services/CartService";
-import { useEffect, useState } from "react";
+import { removeProductFromCart } from "../services/CartService";
 
 function CartProduct({ product, refreshCart }) {
 
   return (
-    <>
       <TableRow>
         <TableCell align="right" sx={{ width: "10%" }}>
           <Avatar
@@ -49,7 +39,6 @@ function CartProduct({ product, refreshCart }) {
           ></Button>
         </TableCell>
       </TableRow>
-    </>
   );
 }
 

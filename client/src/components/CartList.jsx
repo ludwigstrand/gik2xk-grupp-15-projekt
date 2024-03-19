@@ -1,17 +1,5 @@
-import ProductItemSmall from "./ProductItemSmall";
-import ProductItemLarge from "./ProductItemLarge";
 import { useEffect, useState } from "react";
-import ananas from "../assets/ananas.jpg";
-import apelsin from "../assets/apelsin.jpg";
-import äpple from "../assets/äpple.jpg";
-import avocado from "../assets/avocado.jpg";
-import banan from "../assets/banan.jpg";
-import blåbär from "../assets/blåbär.jpg";
-import citron from "../assets/citron.jpg";
-import drakfrukt from "../assets/drakfrukt.jpg";
 import {
-  Box,
-  List,
   Paper,
   Table,
   TableBody,
@@ -20,7 +8,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { getAll } from "../services/ProductService";
 import CartProduct from "./CartProduct";
 import { getOne } from "../services/CartService";
 
@@ -50,7 +37,7 @@ function CartList() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Varukorg</TableCell>
+            <TableCell><h2>Varukorg</h2></TableCell>
             <TableCell align="left">Produkt</TableCell>
             <TableCell align="right">Antal</TableCell>
             <TableCell align="right">Pris</TableCell>
@@ -66,11 +53,13 @@ function CartList() {
               />
             ))
           ) : (
-            <h3>Din kundvagn är tom </h3>
+            <TableRow>
+              <TableCell><h3>Din kundvagn är tom</h3></TableCell>
+            </TableRow> 
           )}
           <TableRow>
             <TableCell colSpan={4} align="right">
-              Totalt pris: {totalPrice} kr
+              {cart.products?.length > 0 ? `Totalt pris: ${totalPrice} kr`: null}
             </TableCell>
           </TableRow>
         </TableBody>
