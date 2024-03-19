@@ -12,9 +12,11 @@ import drakfrukt from "../assets/drakfrukt.jpg";
 import {
   Box,
   List,
+  Paper,
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
 } from "@mui/material";
@@ -35,7 +37,7 @@ function CartList() {
     getOne(1).then((carts) => {
       setCart(carts);
     });
-  };
+  }
 
   let totalPrice = 0;
 
@@ -43,10 +45,8 @@ function CartList() {
     totalPrice = cart.products.reduce((acc, product) => acc + product.price, 0);
   }
 
- 
-
   return (
- 
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -56,10 +56,14 @@ function CartList() {
             <TableCell align="right">Pris</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody >
+        <TableBody>
           {cart.products?.length > 0 ? (
             cart.products.map((products) => (
-              <CartProduct key={products.id} product={products} refreshCart={renderCart}/>
+              <CartProduct
+                key={products.id}
+                product={products}
+                refreshCart={renderCart}
+              />
             ))
           ) : (
             <h3>Din kundvagn är tom </h3>
@@ -71,8 +75,7 @@ function CartList() {
           </TableRow>
         </TableBody>
       </Table>
- 
+    </TableContainer>
   );
-
-          }
+}
 export default CartList;
