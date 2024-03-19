@@ -54,13 +54,14 @@ async function updateCart(cart, id) {
     }
 }
 
-async function destroyCart(id) {
-    if (!id) {
+async function destroyCart(cartId, productId) {
+  console.log(productId)  
+  if (!cartId) {
       return createResponseError(422, "Id är obligatoriskt");
     }
     try {
-      await db.cart.destroy({
-        where: { id },
+      await db.cartRow.destroy({
+        where: { productId },
       });
       return createResponseMessage(200, "Kundvagnen raderades.");
     } catch (error) {

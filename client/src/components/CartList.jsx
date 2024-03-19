@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import { getAll } from "../services/ProductService";
 import CartProduct from "./CartProduct";
-import { getOne } from "../services/CartService";
+import { getOne, removeProductFromCart } from "../services/CartService";
 
 function CartList() {
   const [cart, setCart] = useState({});
@@ -31,15 +31,22 @@ function CartList() {
     });
   }, []);
 
+  function renderCart() {
+    getOne(1).then((carts) => {
+      setCart(carts);
+    });
+  };
+  
+  
+
+
   let totalPrice = 0;
 
   if (cart.products?.length > 0) {
     totalPrice = cart.products.reduce((acc, product) => acc + product.price, 0);
   }
 
-  function ccyFormat(num) {
-    return `${num.toFixed(2)}`;
-  }
+ 
 
   return (
     <>
@@ -69,6 +76,6 @@ function CartList() {
       </Table>
     </>
   );
-}
 
+          }
 export default CartList;

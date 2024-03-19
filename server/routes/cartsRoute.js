@@ -29,9 +29,10 @@ router.put("/", (req, res) => {
     });
 });
 
-router.delete("/", (req, res) => {
-    const id = req.body.id;
-    cartService.destroyCart(id).then((result) => {
+router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    const productId = req.body.productId
+    cartService.destroyCart(id, productId).then((result) => {
         res.status(result.status).json(result.data);
     });
 });
