@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import { getAll } from "../services/ProductService";
 import CartProduct from "./CartProduct";
-import { getOne, removeProductFromCart } from "../services/CartService";
+import { getOne } from "../services/CartService";
 
 function CartList() {
   const [cart, setCart] = useState({});
@@ -36,9 +36,6 @@ function CartList() {
       setCart(carts);
     });
   };
-  
-  
-
 
   let totalPrice = 0;
 
@@ -49,7 +46,7 @@ function CartList() {
  
 
   return (
-    <>
+ 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -59,13 +56,13 @@ function CartList() {
             <TableCell align="right">Pris</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
           {cart.products?.length > 0 ? (
             cart.products.map((products) => (
-              <CartProduct key={products.id} product={products} />
+              <CartProduct key={products.id} product={products} refreshCart={renderCart}/>
             ))
           ) : (
-            <h3>Kunde inte hämta inlägg</h3>
+            <h3>Din kundvagn är tom </h3>
           )}
           <TableRow>
             <TableCell colSpan={4} align="right">
@@ -74,7 +71,7 @@ function CartList() {
           </TableRow>
         </TableBody>
       </Table>
-    </>
+ 
   );
 
           }

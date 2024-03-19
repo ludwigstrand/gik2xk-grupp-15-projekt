@@ -16,24 +16,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { getOne, removeProductFromCart } from "../services/CartService";
 import { useEffect, useState } from "react";
 
-function CartProduct({ product }) {
+function CartProduct({ product, refreshCart }) {
 
-  const [cart, setCart] = useState({});
-
-  useEffect(() => {
-    getOne(1).then((carts) => {
-      setCart(carts);
-    });
-  }, []);
-
-  function onProductDeleteFromCart() {
-    removeProductFromCart(product.productId, 1) // Fix this line to use id directly
-      //Justerat rad 33
-      .then(() => getOne(1))
-      /*       .then((product) => setProduct(product)) */
-      .then(setCart)
-      .catch((error) => console.error("Error updating the rating:", error));
-  }
   return (
     <>
       <TableRow>
@@ -56,7 +40,11 @@ function CartProduct({ product }) {
         <TableCell align="right" sx={{ width: "5%" }}>
           <Button
             startIcon={<DeleteIcon />}
-            onClick={onProductDeleteFromCart()}
+            onClick={() => {
+              removeProductFromCart(product.productId, 1)
+                .then(refreshCart) 
+                .catch((error) => console.error("Error removing product from cart:", error));
+            }}
             color="error"
           ></Button>
         </TableCell>
@@ -66,7 +54,3 @@ function CartProduct({ product }) {
 }
 
 export default CartProduct;
-
-// removeProductFromCart(product.productId, 1).then((response) =>
-//               navigate('/carts/1', { replace: true, state: response })
-//             )}
