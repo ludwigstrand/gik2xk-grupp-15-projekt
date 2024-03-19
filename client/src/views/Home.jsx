@@ -14,6 +14,7 @@ function Home() {
   function clearMessage() {
     window.history.replaceState({}, "");
   }
+  
   return (
     <>
       <Paper elevation={3} sx={{ p: 2, mt: 4, borderRadius: 2 }}>

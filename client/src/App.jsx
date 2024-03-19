@@ -31,7 +31,7 @@ function App() {
             <Link to="/products/new">Lägg till Produkt</Link>
           </Button>
           <Link to={`/carts/${cart.cartId}`}>
-            <Badge badgeContent={4} color="info" sx={{ mr: 3 }}>
+            <Badge badgeContent={cart.products?.reduce((total, product) => total + product.amount, 0) || null} color="info" sx={{ mr: 3 }}>
               <ShoppingCartIcon fontSize="large" sx={{ ml: 5 }} />
             </Badge>
           </Link>

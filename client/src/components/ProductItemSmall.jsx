@@ -28,14 +28,6 @@ let avgRating = 0;
 
 }
 
-function onPurchase(e, productId) {
-
-  addToCart(productId)
-  console.log(productId)
-  console.log('added to cart')
-  return null
-}
-
 function ProductItemSmall({ product }) {
   return (
 
