@@ -1,39 +1,100 @@
-import { useEffect, useState } from 'react';
-import { getOne } from '../services/CartService';
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { getOne } from "../services/CartService";
+import { removeProductFromCart } from "../services/CartService";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  Typography,
+  Container,
+  Button,
+  Divider,
+  Box
+} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Cart() {
-    const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({ products: [] });
+  const { user } = useAuth();
 
-    useEffect(() => {
-        getOne(1).then((carts) => {
-            setCart(carts);
-        });
-    }, []);
+  useEffect(() => {
+    getOne(user.id).then((carts) => {
+    
+      setCart(carts);
+    });
+  }, [user.id]);
 
-    let totalPrice = 0;
+  let totalPrice = cart.products?.reduce((acc, product) => acc + product.price, 0) || 0;
 
-    if (cart.products?.length > 0) {
-        totalPrice = cart.products.reduce((acc, product) => acc + product.price, 0);
-    }
-
-    return (
-      <ul>
-        {cart.products?.length > 0 ? (
+  return (
+    <Container maxWidth="sm">
+      <Typography variant="h4" component="h1" gutterBottom>
+        Din kundkorg
+      </Typography>
+      <List key={2}>
+        {cart.products.length > 0 ? (
           cart.products.map((product) => (
-            <li key={product.id}> 
-                <p>{product.title}</p>
-                <p>{product.amount}</p>
-                <p>{product.price}</p>
-            </li>
+            <div key={product.id}>
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar>
+                    <ShoppingCartIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={product.title}
+                  secondary={
+                    <>
+                      <Typography
+                        sx={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        <Typography >
+                        Antal: {product.amount}
+                        </Typography>
+                        <Typography >
+                        Styckpris: {product.price / product.amount} kr
+                        </Typography>
+                        <Typography >
+                        Pris: {product.price} kr
+                        </Typography>
+                      </Typography>
+                        <Button
+                            variant="contained"
+                            startIcon={<ShoppingCartIcon />}
+                            color="secondary"
+                            onClick = {() => removeProductFromCart(product.productId, cart.cartId)}
+                        />
+                    </>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </div>
           ))
         ) : (
-          <h3>Kunde inte hämta inlägg</h3>
+          <Typography variant="subtitle1" component="p">
+            Din kundkorg är tom.
+          </Typography>
         )}
-        {cart.products?.length > 0 && (
-            <p>Totalt pris: {totalPrice}</p> 
-        )}
-      </ul>
-    );
+      </List>
+      {cart.products.length > 0 && (
+        <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
+          <Typography variant="h6">
+            Totalt pris: {totalPrice} kr
+          </Typography>
+          <Button variant="contained" startIcon={<ShoppingCartIcon />} color="primary">
+            Till kassan
+          </Button>
+        </Box>
+      )}
+    </Container>
+  );
 }
 
 export default Cart;

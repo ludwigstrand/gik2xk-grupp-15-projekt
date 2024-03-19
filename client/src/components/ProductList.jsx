@@ -79,7 +79,7 @@ import { getAll } from "../services/ProductService";
 //   },
 // ];
 
-function ProductList({pathname}) {
+function ProductList({ pathname }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
