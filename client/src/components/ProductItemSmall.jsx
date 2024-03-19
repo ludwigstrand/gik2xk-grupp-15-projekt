@@ -81,7 +81,7 @@ function ProductItemSmall({ product }) {
         />
 
         <CardActions>
-          <Button size="small" color="primary" onClick={()=> addToCart(1, product.id, 2)}>
+          <Button size="small" color="primary" onClick={()=> addToCart(1, product.id, 1)}>
             Köp
           </Button>
         </CardActions>

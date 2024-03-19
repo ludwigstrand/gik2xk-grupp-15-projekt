@@ -128,6 +128,7 @@ function _formatCart(cart) {
           title: product.title,
           amount: product.cartRow.amount,
           price: product.cartRow.amount * product.price,
+          imageUrl: product.imageUrl
         },
         ...cleanCart.products
       ]);

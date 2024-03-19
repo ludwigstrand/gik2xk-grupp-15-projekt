@@ -92,3 +92,17 @@ export async function getRating(productId, rating) {
 
 }
 
+export async function removeProductFromCart(productId, cartId) {
+  try {
+    const response = await axios.delete(`carts/${cartId}`, { data: { productId } 
+    });
+    if (response.status === 200) return response.data;
+    else {
+      console.log(data);
+      return null;
+    }
+  } catch (e) {
+    e?.response ? console.log(e.response.data) : console.log(e);
+  }
+}
+
