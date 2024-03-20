@@ -91,7 +91,7 @@ async function addProductToCart(amount, productId, userId) {
       where: { productId, cartId },
     });
     if (cartRow) {
-      const newAmount = cartRow.amount + 1;
+      const newAmount = cartRow.amount + amount;
       await db.cartRow.upsert({ amount: newAmount, productId: productId, cartId: cartId }, { where: { productId, cartId } });
     }
     else {

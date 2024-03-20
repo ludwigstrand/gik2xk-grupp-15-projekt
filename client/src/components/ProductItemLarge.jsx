@@ -74,7 +74,7 @@ function ProductItemLarge({ product, onRatingAdd }) {
         </Typography>
 
         <NumberInput
-          onChange={(value) => setQuantity(value)}
+          onChange={(quantity) => setQuantity(quantity)}
           sx={{ mr: 5 }}
         />
         
