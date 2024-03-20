@@ -14,7 +14,7 @@ function Home() {
           alignItems="center"
         >
           <Typography variant="h2" sx={{}}>
-            Välkommen till grönsaks-shoppen!
+            Välkommen till frukt och grönsaks-shoppen!
           </Typography>
         </Box>
         <ProductList />

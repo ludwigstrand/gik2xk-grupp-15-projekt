@@ -2,7 +2,7 @@ import { useLocation, useParams } from "react-router-dom";
 import ProductItemLarge from "../components/ProductItemLarge";
 import { addRating, getOne } from "../services/ProductService";
 import { useEffect, useState } from "react";
-import { Alert, Box, Container, List, Paper, Typography } from "@mui/material";
+import { Alert, Box, Card, Container, List, Paper, Typography } from "@mui/material";
 
 import RatingList from "../components/RatingList";
 
@@ -47,6 +47,7 @@ function ProductDetail() {
         <Box>
           <ProductItemLarge product={product} onRatingAdd={onRatingAdd} />
           <Typography variant="h3">Betyg</Typography>
+          <Card sx={{mt:2}}>
           {product.ratings && (
             <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
               {product.ratings.map((rating, i) => (
@@ -54,6 +55,7 @@ function ProductDetail() {
               ))}
             </List>
           )}
+          </Card>
         </Box>
       </Container>
       </Paper>
