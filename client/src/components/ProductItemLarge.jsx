@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../services/CartService";
 import NumberInput from "./NumberInput";
 import { avgRating } from "./ProductItemSmall";
@@ -18,6 +18,17 @@ import { avgRating } from "./ProductItemSmall";
 function ProductItemLarge({ product, onRatingAdd }) {
   const [value, setValue] = useState(0);
   const [quantity, setQuantity] = useState(1);
+
+  const navigate = useNavigate();
+  
+  function onBuy() {
+    addToCart(quantity, product.id, 1).then(() => {
+        navigate(`/products/${product.id}`, {
+          replace: true,
+          state: { message: `Produkten lades till i kundkorgen.` }
+        });
+      });
+  }
 
   return (
     <Card sx={{ width: 500, mb: 10 }}>
@@ -44,7 +55,6 @@ function ProductItemLarge({ product, onRatingAdd }) {
           onChange={(_, rating) => {
             setValue(rating);
           }}
-          onSave={onRatingAdd}
           precision={0.5}
         />
         <Button
@@ -75,7 +85,7 @@ function ProductItemLarge({ product, onRatingAdd }) {
           variant="contained"
           size="small"
           color="primary"
-          onClick={() => addToCart(quantity, product.id, 1)}
+          onClick={onBuy}
         >
           Köp
         </Button>

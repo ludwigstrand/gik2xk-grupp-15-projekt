@@ -47,7 +47,7 @@ function CartList() {
           {cart.products?.length > 0 ? (
             cart.products.map((products) => (
               <CartProduct
-                key={products.id}
+                key={products.productId}
                 product={products}
                 refreshCart={renderCart}
               />
