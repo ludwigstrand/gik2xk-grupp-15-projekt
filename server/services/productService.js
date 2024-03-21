@@ -22,7 +22,6 @@ async function getAllProducts() {
     const allProducts = await db.product.findAll({
       include: [db.rating],
     });
-    /* Om allt blev bra, returnera allProducts */
     return createResponseSuccess(allProducts);
   } catch (error) {
     return createResponseError(error.status, error.message);
@@ -37,7 +36,6 @@ async function getProduct(id) {
         db.rating,
       ]
     });
-    /* Om allt blev bra, returnera post */
     return createResponseSuccess(product);
   } catch (error) {
     return createResponseError(error.status, error.message);
@@ -65,9 +63,6 @@ async function create(product) {
   }
   try {
     const newProduct = await db.product.create(product);
-    //post tags är en array av namn
-    //lägg till eventuella taggar
-    //await _addTagToPost(newPost, product.tags);
 
     return createResponseSuccess(newProduct);
   } catch (error) {
@@ -88,7 +83,6 @@ async function update(product, id) {
     if (!existingProduct) {
       return createResponseError(404, "Hittade ingen produkt att uppdatera.");
     }
-    // await _addTagToPost(existingProduct, product.tags);
     await db.product.update(product, {
       where: { id },
     });

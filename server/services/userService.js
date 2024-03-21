@@ -20,7 +20,6 @@ const constraints = {
 async function getAllUsers() {
   try {
     const allUsers = await db.user.findAll();
-    /* Om allt blev bra, returnera allProducts */
     return createResponseSuccess(allUsers);
   } catch (error) {
     return createResponseError(error.status, error.message);
@@ -34,8 +33,6 @@ async function create(user) {
   }
   try {
     const newUser = await db.user.create(user);
-    //post tags är en array av namn
-    //lägg till eventuella taggar
 
     return createResponseSuccess(newUser);
   } catch (error) {
@@ -56,7 +53,6 @@ async function update(user, id) {
     if (!existingUser) {
       return createResponseError(404, "Hittade ingen användare att uppdatera.");
     }
-    // await _addTagToPost(existingProduct, product.tags);
     await db.user.update(user, {
       where: { id },
     });
@@ -84,7 +80,6 @@ async function getUserCart(userId) {
   try {
     const user = await db.user.findOne({ where: { id: userId } });
     const allCarts = await user.getCarts({ include: [db.user] });
-    /* Om allt blev bra, returnera allCarts */
     return createResponseSuccess(allCarts);
   } catch (error) {
     return createResponseError(error.status, error.message);

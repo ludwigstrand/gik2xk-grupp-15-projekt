@@ -32,7 +32,7 @@ router.put("/", (req, res) => {
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
     const productId = req.body.productId
-    cartService.destroyCart(id, productId).then((result) => {
+    cartService.destroyCartRow(id, productId).then((result) => {
         res.status(result.status).json(result.data);
     });
 });
@@ -41,9 +41,6 @@ router.post("/addProduct", (req, res) => {
     const amount = req.body.amount;
     const productId = req.body.productId;
     const userId = req.body.userId;
-    console.log("amount: ", amount);
-    console.log("productId: ", productId);
-    console.log("userId: ", userId);
     cartService.addProductToCart( amount, productId, userId ).then((result) => {
         res.status(result.status).json(result.data);
     });

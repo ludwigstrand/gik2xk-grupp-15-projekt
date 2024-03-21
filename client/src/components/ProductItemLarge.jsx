@@ -9,14 +9,12 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { addToCart } from "../services/CartService";
 import NumberInput from "./NumberInput";
 import { avgRating } from "./ProductItemSmall";
 
-//Lagt till onRatingAdd som in, rad 18
 function ProductItemLarge({ product, onRatingAdd }) {
   const [value, setValue] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -25,7 +23,6 @@ function ProductItemLarge({ product, onRatingAdd }) {
     <Card sx={{ width: 500, mb: 10 }}>
       <CardActionArea>
         <CardMedia
-          // sx={{ height: 100 }}
           component="img"
           image={product.imageUrl}
           alt="fruit"
@@ -44,17 +41,14 @@ function ProductItemLarge({ product, onRatingAdd }) {
           sx={{ ml: 2 }}
           name="simple-controlled"
           defaultValue={avgRating(product)}
-          onChange={(event, rating) => {
+          onChange={(_, rating) => {
             setValue(rating);
           }}
-          // Lagt till rad 50
           onSave={onRatingAdd}
           precision={0.5}
         />
         <Button
-          //Ändrat rad 55
           onClick={() => onRatingAdd(value)}
-          //  onClick={() => addRating(product.id, value)}
           variant="contained"
           sx={{ ml: 4 }}
         >

@@ -8,7 +8,6 @@ const {
 async function getAllCarts() {
   try {
     const allCarts = await db.cart.findAll();
-    /* Om allt blev bra, returnera allProducts */
     return createResponseSuccess(allCarts);
   } catch (error) {
     return createResponseError(error.status, error.message);
@@ -54,8 +53,7 @@ async function updateCart(cart, id) {
     }
 }
 
-async function destroyCart(cartId, productId) {
-  console.log(productId)  
+async function destroyCartRow(cartId, productId) { 
   if (!cartId) {
       return createResponseError(422, "Id är obligatoriskt");
     }
@@ -86,7 +84,7 @@ async function addProductToCart(amount, productId, userId) {
     return createResponseError(422, "Amount, productId, and userId are required");
   }
   try {
-    const cartId = await _findOrCreateCart(userId); // Await the promise to get the cart ID
+    const cartId = await _findOrCreateCart(userId);
     const cartRow = await db.cartRow.findOne({
       where: { productId, cartId },
     });
@@ -98,7 +96,7 @@ async function addProductToCart(amount, productId, userId) {
     await db.cartRow.create({
       amount: amount,
       productId: productId,
-      cartId: cartId, // Use the awaited value
+      cartId: cartId, 
     });}
     return createResponseMessage(200, "The product was added to the cart.");
   } catch (error) {
@@ -138,33 +136,5 @@ function _formatCart(cart) {
   return cleanCart;
 }
 
-// async function addProduct(amount, productId, cartId) {
-//   try {
-//     const cartRow = await db.cartRow.create({
-//       amount: amount,
-//       productId: productId,
-//       cartId: cartId,
-//     });
-//     // const cart = await db.cart.findOne({ where: { id: cartId } });
-//     // const product = await db.product.findOne({ where: { id: productId } });
-//     // await cartRow.addProduct( amount, product, cart );
-//     cartRow.setProduct(productId);
-//     return createResponseMessage(200, "Produkten lades till i kundvagnen.");
-//   } catch (error) {
-//     return createResponseError(error.status, error.message);
-//   }
-// }
-
-// async function getCart(userId) {
-//   try {
-//     const user = await db.user.findOne({ where: { id: userId } });
-//     const allCarts = await user.getCarts({ include: [db.user] });
-//     /* Om allt blev bra, returnera allCarts */
-//     return createResponseSuccess(allCarts);
-//   } catch (error) {
-//     return createResponseError(error.status, error.message);
-//   }
-// }
-
-
-module.exports = { getAllCarts, getCart, createCart, updateCart, destroyCart, addProductToCart };
+module.exports = { getAllCarts, getCart, createCart, updateCart, destroyCartRow
+, addProductToCart };
