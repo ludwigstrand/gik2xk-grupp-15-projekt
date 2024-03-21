@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { removeProductFromCart } from "../services/CartService";
+import { Link } from "react-router-dom";
 
 function CartProduct({ product, refreshCart }) {
 
@@ -18,8 +19,8 @@ function CartProduct({ product, refreshCart }) {
             sx={{ width: 100, height: 100 }}
           />
         </TableCell>
-        <TableCell align="left" key={product.id} sx={{ mr: 1, width: "25%" }}>
-          {product.title}
+        <TableCell align="left" key={product.productId} sx={{ mr: 1, width: "25%" }}>
+        <Link to={`/products/${product.productId}`}>{product.title}</Link>
         </TableCell>
         <TableCell align="right" sx={{ mr: 1, width: "40%" }}>
           {product.amount} st
