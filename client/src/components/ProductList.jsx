@@ -1,6 +1,5 @@
 import ProductItemSmall from "./ProductItemSmall";
 import { useEffect, useState } from "react";
-
 import { Box } from "@mui/material";
 import { getAll } from "../services/ProductService";
 

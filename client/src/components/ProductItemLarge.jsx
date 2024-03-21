@@ -7,11 +7,9 @@ import {
   CardContent,
   CardMedia,
   Rating,
-  TextField,
   Typography,
 } from "@mui/material";
-//Tagit bort rad 13:
-// import { addRating } from "../services/ProductService";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { addToCart } from "../services/CartService";

@@ -4,11 +4,23 @@ import { toDateTimeString } from '../common/formatHelpers';
 
 function RatingList({ rating }) {
 
-  const emptyUser = {
+  const randomUser = [
+    {id: 1,
+      firstName: 'Hanna',
+      lastName: 'Adamsson',
+    },
+    {
     id: 2,
     firstName: 'Ludwig',
     lastName: 'Strand',
-  };
+  },
+  {id:3, firstName: 'William', lastName:'Olsson'},
+
+  {id: 4,
+    firstName: 'Victor',
+    lastName: 'Kajgård',}
+
+  ];
 
   return (
     <ListItem sx={{ mb: 1, borderBottom: `1px solid ${grey[300]}` }}>
@@ -19,7 +31,7 @@ function RatingList({ rating }) {
             component="p"
             fontWeight="bold"
             variant="body1">
-            {emptyUser.firstName} gav:
+            {randomUser[Math.floor(Math.random() * randomUser.length)].firstName} gav: 
           </Typography>
         }
         secondary={
@@ -37,10 +49,10 @@ function RatingList({ rating }) {
           precision={0.5}
           readOnly
           sx={{ ml: 2 }}
-          
         />
           </Box>
-        }></ListItemText>
+        }>
+      </ListItemText>
     </ListItem>
   );
 }

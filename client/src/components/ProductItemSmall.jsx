@@ -19,13 +19,8 @@ let avgRating = 0;
   product.ratings.length > 0 &&
     product.ratings.map((index) => (
     avgRating += index.rating
-
     ))
-
-    
     return avgRating/product.ratings.length
-    
-
 }
 
 function ProductItemSmall({ product }) {
@@ -65,14 +60,12 @@ function ProductItemSmall({ product }) {
           readOnly
           sx={{ ml: 2 }}
         />
-
         <CardActions>
           <Button size="small" color="primary" onClick={()=> addToCart(1, product.id, 1)}>
             Köp
           </Button>
         </CardActions>
       </Card>
-    
   );
 }
 
