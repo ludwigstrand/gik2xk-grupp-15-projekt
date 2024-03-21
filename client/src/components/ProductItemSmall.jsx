@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { truncate } from "../common/formatHelpers";
 import { Button, Rating, CardActionArea, CardActions, Alert } from "@mui/material";
 import { addToCart } from "../services/CartService";
+import { useState } from "react";
 
 export function avgRating(product) {
   let avgRating = 0;
