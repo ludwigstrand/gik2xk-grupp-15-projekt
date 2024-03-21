@@ -15,12 +15,8 @@ function App() {
   const [cart, setCart] = useState({});
 
   useEffect(() => {
-    updateCart();
-  }, []);
-
-  function updateCart () {
     getOne(1).then((fetchedCart) => setCart(fetchedCart));
-  }
+  }, []);
 
   return (
     <>
