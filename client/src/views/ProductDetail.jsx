@@ -12,6 +12,12 @@ function ProductDetail() {
   const location = useLocation();
   const message = location.state?.message;
 
+  const [open, setOpen] = useState(true);
+
+  function clearMessage() {
+    window.history.replaceState({}, '');
+  }
+
   useEffect(() => {
     getOne(id).then(setProduct);
   }, [id]);
@@ -24,20 +30,22 @@ function ProductDetail() {
   }
 
   return product ? (
+  <>
+    {message && open && (
+      <Alert
+        onClose={() => {
+          setOpen(false);
+          clearMessage();
+        }}
+        variant="filled"
+        severity="success"
+      >
+        {message}
+      </Alert>
+    )}
 
     <Paper elevation={3} sx={{ pb: 10, pt: 10, borderRadius: 2 }}>
-      {message && open && (
-        <Alert
-          onClose={(clearMessage) => {
-            setOpen(false);
-            clearMessage();
-          }}
-          variant="filled"
-          severity="success"
-        >
-          {message}
-        </Alert>
-      )}
+      
       <Container maxWidth="lg" sx={{display: "flex", justifyContent:"center"}}>
         <Box>
           <ProductItemLarge product={product} onRatingAdd={onRatingAdd} />
@@ -54,6 +62,7 @@ function ProductDetail() {
         </Box>
       </Container>
       </Paper>
+      </>
   ) : (
     <h3>Kunde inte hämta produkt</h3>
   );

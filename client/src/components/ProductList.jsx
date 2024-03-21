@@ -12,7 +12,7 @@ function ProductList({ pathname }) {
     });
   }, [pathname]);
   return (
-    <Box display={"flex"} flexWrap={"wrap"} gap={5}>
+    <Box display={"flex"} flexWrap={"wrap"} gap={5} justifyContent={"center"}>
     {products?.length > 0 ? (
      products
         .map((products) => (
