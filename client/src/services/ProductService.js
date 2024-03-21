@@ -80,17 +80,4 @@ export async function addRating(productId, rating) {
   }
 }
 
-export async function getRating(productId, rating) {
-  try {
-    const response = await axios.get(`/products/${productId}`);
-    if (response.status === 200) return response.data;
-    else {
-      console.log(response.data);
-      return null;
-    }
-  } catch (e) {
-    e?.response ? console.log(e.response.data) : console.log(e);
-  }
-
-}
 

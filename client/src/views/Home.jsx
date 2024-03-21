@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { Box, Paper, Typography } from "@mui/material";
 import ProductList from "../components/ProductList";
-import { useState } from "react";
+
 
 function Home() {
   const location = useLocation();
