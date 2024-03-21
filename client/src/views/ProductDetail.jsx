@@ -8,9 +8,7 @@ import RatingList from "../components/RatingList";
 
 function ProductDetail() {
   const { id } = useParams();
-
   const [product, setProduct] = useState(null);
-
   const location = useLocation();
   const message = location.state?.message;
 
@@ -19,10 +17,8 @@ function ProductDetail() {
   }, [id]);
 
   function onRatingAdd(ratingValue) {
-    addRating(id, ratingValue) // Fix this line to use id directly
-    //Justerat rad 33
+    addRating(id, ratingValue)
       .then(() => getOne(id))
-/*       .then((product) => setProduct(product)) */
       .then(setProduct)
       .catch((error) => console.error("Error updating the rating:", error));
   }
@@ -32,7 +28,6 @@ function ProductDetail() {
     <Paper elevation={3} sx={{ pb: 10, pt: 10, borderRadius: 2 }}>
       {message && open && (
         <Alert
-        //Lagt till clearMessage
           onClose={(clearMessage) => {
             setOpen(false);
             clearMessage();
