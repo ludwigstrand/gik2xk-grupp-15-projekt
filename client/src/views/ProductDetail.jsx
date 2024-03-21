@@ -29,12 +29,7 @@ function ProductDetail() {
       .catch((error) => console.error("Error updating the rating:", error));
   }
 
-  function clearMessage() {
-    window.history.replaceState({}, '');
-  }
-
   return product ? (
-
     <Paper elevation={3} sx={{ pb: 10, pt: 10, borderRadius: 2 }}>
       {message && open && (
         <Alert
@@ -64,7 +59,6 @@ function ProductDetail() {
         </Box>
       </Container>
       </Paper>
-      </>
   ) : (
     <h3>Kunde inte hämta produkt</h3>
   );
