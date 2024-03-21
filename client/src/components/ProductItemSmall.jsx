@@ -43,9 +43,9 @@ const onBuy = () => {
                 {product.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {truncate(product.description, 75)}
+                {truncate(product.description, 68)}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary" sx={{ mt: 1 }}>
                 {product.price} kr
               </Typography>
             </CardContent>

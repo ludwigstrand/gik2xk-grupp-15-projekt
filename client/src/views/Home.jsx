@@ -6,7 +6,6 @@ function Home() {
 
  
   return (
-  
       <Paper elevation={3} sx={{ p: 2, mt: 4, borderRadius: 2 }}>
         <Box
           display="flex"
@@ -19,7 +18,6 @@ function Home() {
         </Box>
         <ProductList />
       </Paper>
-      
   );
 }
 
